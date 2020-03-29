@@ -16,6 +16,7 @@
     <!-- Styles -->
 
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
@@ -82,7 +83,6 @@
             <div class="container">
                 <div class="row justify-content-center">
 
-                  <!-- サイドバー -->
                   @include('layouts.sidebar')
 
                   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

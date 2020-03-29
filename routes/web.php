@@ -14,9 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Auth::routes();
-
+// home画面
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::prefix('web')->group(function () {
+
+  Route::get('/', 'WebController@index')->name('/');
+});
