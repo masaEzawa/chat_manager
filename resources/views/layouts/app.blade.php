@@ -16,6 +16,7 @@
     <!-- Styles -->
 
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}" defer></script>
@@ -75,7 +76,22 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            @guest
+              @yield('content')
+            @else
+            <div class="container">
+                <div class="row justify-content-center">
+
+                  <!-- サイドバー -->
+                  @include('layouts.sidebar')
+
+                  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                      <!-- メインコンテンツ -->
+                      @yield('content')
+                  </div>
+              </div>
+            </div>
+            @endguest
         </main>
     </div>
 </body>
