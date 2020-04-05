@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::prefix('web')->group(function () {
+Route::prefix('chat')->group(function () {
 
-  Route::get('/', 'WebController@index')->name('/');
+  Route::get('/', 'ChatController@index')->name('/');
 });

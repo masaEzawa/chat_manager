@@ -3,7 +3,7 @@
 @section('content')
 <!-- メインコンテンツ -->
     <div class="card">
-        <div class="card-header">Webサイト一覧</div>
+        <div class="card-header">チャットサイト一覧</div>
 
         <div class="card-body">
             <div class="row">

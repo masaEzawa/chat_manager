@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class WebController extends Controller
+class ChatController extends Controller
 {
   /**
    * Create a new controller instance.
@@ -15,7 +15,7 @@ class WebController extends Controller
   {
       $this->middleware('auth');
       // ルート
-      $this->route = "web";
+      $this->route = "chat";
   }
 
   /**
