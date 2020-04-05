@@ -19,19 +19,29 @@
                   </ul>
               </li>
               --}}
-              <li {!! Request::is( 'web' ) ? 'style="background-color: #ee8"' : '' !!}>
-                  <a href="{{ url( 'web/' ) }}">
-                    Webサイト一覧
+              <li {!! Request::is( 'home' ) ? 'style="background-color: #ee8"' : '' !!}>
+                  <a href="{{ url( 'home/' ) }}">
+                    トップ
+                  </a>
+              </li>
+              <li {!! Request::is( 'chat' ) ? 'style="background-color: #ee8"' : '' !!}>
+                  <a href="{{ url( 'chat/' ) }}">
+                    チャット一覧
+                  </a>
+              </li>
+              <li {!! Request::is( 'chat_create' ) ? 'style="background-color: #ee8"' : '' !!}>
+                  <a href="{{ url( 'chat_create/' ) }}">
+                    チャット作成
                   </a>
               </li>
               <li {!! Request::is( 'system' ) ? 'style="background-color: #ee8"' : '' !!}>
                   <a href="{{ url( 'system/' ) }}">
-                    システム一覧
+                    〇〇一覧
                   </a>
               </li>
               <li {!! Request::is( 'server' ) ? 'style="background-color: #ee8"' : '' !!}>
                   <a href="{{ url( 'server/' ) }}">
-                    サーバー一覧
+                    〇〇一覧
                   </a>
               </li>
           </ul>

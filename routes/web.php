@@ -26,3 +26,8 @@ Route::prefix('chat')->group(function () {
 
   Route::get('/', 'ChatController@index')->name('/');
 });
+
+Route::prefix('chat_create')->group(function () {
+  Route::post('create', 'ChatCreateController@create')->name('create');
+  Route::get('/', 'ChatCreateController@index')->name('/');
+});
