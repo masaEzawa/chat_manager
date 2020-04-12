@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('user_type')->comment('権限');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

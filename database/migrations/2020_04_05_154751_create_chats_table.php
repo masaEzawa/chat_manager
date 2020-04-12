@@ -19,6 +19,7 @@ class CreateChatsTable extends Migration
             $table->integer('from_user_id')->comment('先出人ユーザーID');
             $table->text('message')->comment('メッセージ');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

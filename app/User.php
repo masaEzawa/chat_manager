@@ -5,10 +5,14 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
+
+     // テーブル名
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +20,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', // ユーザー名
+        'email', // メールアドレス
+        'email_verified_at', // メールアドレスの確認日時
+        'password', // パスワード
+        'user_type', // 権限
     ];
 
     /**

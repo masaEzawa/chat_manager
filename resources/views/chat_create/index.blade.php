@@ -6,6 +6,7 @@
         <div class="card-header">チャット一覧</div>
 
         <div class="card-body">
+          {{-- データが存在するとき --}}
           @forelse ( $datas as $data )
 
             <div class="chat-box">

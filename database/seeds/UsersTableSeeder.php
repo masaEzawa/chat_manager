@@ -19,13 +19,17 @@ class UsersTableSeeder extends Seeder
               'password'       => Hash::make('password'),
               'user_type'      => 1,
               'remember_token' => str_random(10),
+              'created_at'     => date("Y-m-d H:i:s"),
+              'updated_at'     => date("Y-m-d H:i:s"),
           ],
           [
               'name'           => 'くろ',
               'email'          => 'masahii06786@gmail.com',
               'password'       => Hash::make('password'),
-              'user_type'      => 1,
+              'user_type'      => 2,
               'remember_token' => str_random(10),
+              'created_at'     => date("Y-m-d H:i:s"),
+              'updated_at'     => date("Y-m-d H:i:s"),
           ],
       ]);
     }

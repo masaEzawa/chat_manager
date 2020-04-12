@@ -14,14 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return redirect('login');
 });
+
 
 Auth::routes();
 // home画面
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+/**
+ * チャット
+ */
 Route::prefix('chat')->group(function () {
 
   Route::get('/', 'ChatController@index')->name('/');
@@ -30,4 +33,13 @@ Route::prefix('chat')->group(function () {
 Route::prefix('chat_create')->group(function () {
   Route::post('create', 'ChatCreateController@create')->name('create');
   Route::get('/', 'ChatCreateController@index')->name('/');
+});
+
+/**
+ * ユーザー一覧
+ */
+Route::prefix('user')->group(function () {
+  Route::get('create', 'UserController@create')->name('user.create');
+  Route::post('comp', 'UserController@comp')->name('user.comp');
+  Route::get('/', 'UserController@index')->name('user');
 });

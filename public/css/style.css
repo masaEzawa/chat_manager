@@ -67,6 +67,11 @@
   background-color: #fff;
 }
 
+/*color*/
+.color-dpink {
+    color: deeppink;
+}
+
 /* チャットレイアウト */
 .chat-box {
     width: 100%;
