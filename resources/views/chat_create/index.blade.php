@@ -9,32 +9,42 @@
           {{-- データが存在するとき --}}
           @forelse ( $datas as $data )
 
+            {{-- 相手ユーザーが送信した場合 --}}
+            @if( $data->from_user_id === $target_userid )
             <div class="chat-box">
               <div class="chat-face">
-                <img src="https://pbs.twimg.com/profile_images/1223671265770164224/Fj0bUIcC_x96.jpg" alt="自分のチャット画像です。" width="90" height="90">
+                <img src="https://lh3.googleusercontent.com/-2_U6eFWc8Tw/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJMRPew_24TI-XNFMczYgNs0hWUpjA.CMID/s192-c/photo.jpg" alt="誰かのチャット画像です。" width="90" height="90">
               </div>
               <div class="chat-area">
-                <div class="chat-hukidashi">
+                <div class="chat-hukidashi someone">
                   {{ $data->message }}
                 </div>
+                {{ date( 'Y年m月d日', strtotime( $data->created_at ) ) }}
               </div>
             </div>
+            @else
+              {{-- ログインユーザーが送信した場合 --}}
+              <div class="chat-box">
+                <div class="chat-face">
+                  <img src="https://pbs.twimg.com/profile_images/1223671265770164224/Fj0bUIcC_x96.jpg" alt="自分のチャット画像です。" width="90" height="90">
+                </div>  
+                <div class="chat-area">
+                
+                  <div class="chat-hukidashi">
+                    {{ $data->message }}
+                  </div>
+                  {{ date( 'Y年m月d日', strtotime( $data->created_at ) ) }}
+                </div>
+              </div>
+            @endif
+
+            
           @empty
             メッセージはありません。
           @endforelse
 
           {{--
-          <div class="chat-box">
-            <div class="chat-face">
-              <img src="https://lh3.googleusercontent.com/-2_U6eFWc8Tw/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJMRPew_24TI-XNFMczYgNs0hWUpjA.CMID/s192-c/photo.jpg" alt="誰かのチャット画像です。" width="90" height="90">
-            </div>
-            <div class="chat-area">
-              <div class="chat-hukidashi someone">
-                ふきだしだよ<br>
-                へへへ
-              </div>
-            </div>
-          </div>
+          
           --}}
 
           <form class="" action="{{ url( $route . '/create' ) }}" method="post">

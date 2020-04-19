@@ -35,6 +35,7 @@ class UserRequest extends FormRequest
             $rules['email'] = 'required|email|unique:users'; // パスワード
             $rules['password'] = 'required'; // パスワード
         }
+        
         return $rules; 
     }
 

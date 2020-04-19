@@ -57,15 +57,15 @@
                   {{-- 操作 --}}
                   <td class="list_td">
                     {{-- 詳細 --}}
-                    <a href="{{ url( $route . '/detail/1' ) }}">
+                    <a href="{{ url( $route . '/detail/' . $data->id ) }}">
                       <i class="fas fa-search pr-1"></i>
                     </a>
                     {{-- 編集 --}}
-                    <a href="{{ url( $route . '/edit/1' ) }}">
+                    <a href="{{ url( $route . '/edit/' . $data->id ) }}">
                       <i class="fas fa-edit pr-1"></i>
                     </a>
                     {{-- 削除 --}}
-                    <a href="{{ url( $route . '/delete/1' ) }}">
+                    <a href="{{ url( $route . '/delete/' . $data->id ) }}">
                       <i class="fas fa-trash pr-1"></i>
                     </a>
                   </td>

@@ -40,6 +40,7 @@ Route::prefix('chat_create')->group(function () {
  */
 Route::prefix('user')->group(function () {
   Route::get('create', 'UserController@create')->name('user.create');
+  Route::get('edit/{id}', 'UserController@edit')->name('user.edit');
   Route::post('comp', 'UserController@comp')->name('user.comp');
   Route::get('/', 'UserController@index')->name('user');
 });

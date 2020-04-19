@@ -21,15 +21,37 @@ class ChatCreateController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * チャットの一覧
      */
     public function index()
     {
-       $datas = Chat::all();
-        return view( $this->route . '.index' , compact( 'datas' ) )
-        ->with( 'route', $this->route );
+      // ログインユーザーのID
+      $auth_id = \Auth::id();
+      
+      // 相手（ターゲットのID）
+      $target_userid = 2;
+
+      $sql = "
+        (
+          -- 自分が相手に送信したメッセージ
+          from_user_id = {$auth_id} AND
+          to_user_id = {$target_userid}
+        ) OR (
+          -- 相手が自分に送信したメッセージ
+          from_user_id = {$target_userid } AND
+          to_user_id = {$auth_id}
+        )
+      ";
+
+      
+      $datas = Chat::whereRaw( \DB::Raw( $sql ) )
+                  ->get();
+
+      return view( 
+        $this->route . '.index' ,
+        compact( 'datas', 'auth_id', 'target_userid' ) 
+      )
+      ->with( 'route', $this->route );
     }
 
     /**

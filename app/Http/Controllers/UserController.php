@@ -22,9 +22,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * ユーザーの一覧表示
      */
     public function index()
     {
@@ -33,6 +31,9 @@ class UserController extends Controller
                 ->with( 'route', $this->route );
     }
 
+    /**
+     * ユーザーの登録画面
+     */
     public function create(){
         $data = new User();
 
@@ -40,11 +41,28 @@ class UserController extends Controller
                 ->with( 'route', $this->route );
     }
 
+    /**
+     * ユーザー編集画面
+     */
+    public function edit( $id ){
+        $data = User::findOrFail( $id );
+        
+        return view( $this->route . '.input', compact( 'data' ) )
+                ->with( 'route', $this->route )
+                ->with( 'input_mode', 'edit' );
+    }
+
+    /**
+     * ユーザー登録処理
+     */
     public function comp( UserRequest $req ){
         // IDが存在するとき
         if( isset( $req->id ) ){
             // 編集処理
-            dd(222);
+            $user = User::findOrFail( $req->id );
+            $setValue = $req->all();
+            // 編集処理
+            $user->update( $setValue );
         }else{
             // 登録処理
             $user = new User();
