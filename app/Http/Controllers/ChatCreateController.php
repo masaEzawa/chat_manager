@@ -30,7 +30,10 @@ class ChatCreateController extends Controller
       
       // 相手（ターゲットのID）
       $target_userid = 2;
-
+      if( $auth_id == 2 ){
+        $target_userid = 1;
+      }
+      
       $sql = "
         (
           -- 自分が相手に送信したメッセージ
@@ -42,7 +45,6 @@ class ChatCreateController extends Controller
           to_user_id = {$auth_id}
         )
       ";
-
       
       $datas = Chat::whereRaw( \DB::Raw( $sql ) )
                   ->get();
@@ -78,5 +80,36 @@ class ChatCreateController extends Controller
 
         return redirect($this->route );
 
+    }
+
+    /**
+     * ajax 
+     */
+    public function ajaxGetData(){
+      // ログインユーザーのID
+      $auth_id = \Auth::id();
+      
+      // 相手（ターゲットのID）
+      $target_userid = 2;
+      if( $auth_id == 2 ){
+        $target_userid = 1;
+      }
+      
+      $sql = "
+        (
+          -- 自分が相手に送信したメッセージ
+          from_user_id = {$auth_id} AND
+          to_user_id = {$target_userid}
+        ) OR (
+          -- 相手が自分に送信したメッセージ
+          from_user_id = {$target_userid } AND
+          to_user_id = {$auth_id}
+        )
+      ";
+      
+      $datas = Chat::whereRaw( \DB::Raw( $sql ) )
+                  ->get();
+
+      return response()->json($datas->all());
     }
 }

@@ -1,47 +1,17 @@
 @extends('layouts.app')
 
+@section('js')
+@parent
+@stop
+
 @section('content')
 <!-- メインコンテンツ -->
     <div class="card">
         <div class="card-header">チャット一覧</div>
 
-        <div class="card-body">
-          {{-- データが存在するとき --}}
-          @forelse ( $datas as $data )
+        <div class="card-body" id="app">
 
-            {{-- 相手ユーザーが送信した場合 --}}
-            @if( $data->from_user_id === $target_userid )
-            <div class="chat-box">
-              <div class="chat-face">
-                <img src="https://lh3.googleusercontent.com/-2_U6eFWc8Tw/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJMRPew_24TI-XNFMczYgNs0hWUpjA.CMID/s192-c/photo.jpg" alt="誰かのチャット画像です。" width="90" height="90">
-              </div>
-              <div class="chat-area">
-                <div class="chat-hukidashi someone">
-                  {{ $data->message }}
-                </div>
-                {{ date( 'Y年m月d日', strtotime( $data->created_at ) ) }}
-              </div>
-            </div>
-            @else
-              {{-- ログインユーザーが送信した場合 --}}
-              <div class="chat-box">
-                <div class="chat-face">
-                  <img src="https://pbs.twimg.com/profile_images/1223671265770164224/Fj0bUIcC_x96.jpg" alt="自分のチャット画像です。" width="90" height="90">
-                </div>  
-                <div class="chat-area">
-                
-                  <div class="chat-hukidashi">
-                    {{ $data->message }}
-                  </div>
-                  {{ date( 'Y年m月d日', strtotime( $data->created_at ) ) }}
-                </div>
-              </div>
-            @endif
-
-            
-          @empty
-            メッセージはありません。
-          @endforelse
+          <example-component v-bind:target_userid="{{ $target_userid }}"></example-component>
 
           {{--
           

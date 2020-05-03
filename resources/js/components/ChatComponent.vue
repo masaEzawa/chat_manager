@@ -8,9 +8,9 @@
                 <img src="https://pbs.twimg.com/profile_images/1223671265770164224/Fj0bUIcC_x96.jpg" alt="自分のチャット画像です。" width="90" height="90">
             </div>
             <div class="chat-area">
-                <div class="chat-hukidashi someone">
-                    {{ data.message }}
-                </div>
+            <div class="chat-hukidashi someone">
+                @{{ data.message }}
+            </div>
             
             </div>
         </div>
@@ -23,15 +23,13 @@
         data () {
             return {
                 datas: null
+                target_userid: null
             }
         },
-        props:["target_userid"],
-        async mounted () {
-            await axios
+        mounted () {
+            axios
             .get('chat_create/ajax_get_data') //ここにURLを入れる
-            .then(response => (this.datas = response.data
-            console.log( this.datas )
-            ))
+            .then(response => (this.datas = response.data))
             .catch((e) => { alert(e); });
         }
     }

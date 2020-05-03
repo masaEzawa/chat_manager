@@ -13,15 +13,14 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    @section('css')
     <!-- Styles -->
-
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    @show
 
-    <!-- Scripts -->
-    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
 </head>
 <body>
     <div id="app">
@@ -99,5 +98,16 @@
             @endguest
         </main>
     </div>
+
+    @section('js')
+    <!-- Scripts -->
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="{{ asset('/js/app.js') }}"></script>
+    @show
+
+    
 </body>
 </html>

@@ -32,6 +32,7 @@ Route::prefix('chat')->group(function () {
 
 Route::prefix('chat_create')->group(function () {
   Route::post('create', 'ChatCreateController@create')->name('create');
+  Route::get('ajax_get_data', 'ChatCreateController@ajaxGetData')->name('ajax_get_data');
   Route::get('/', 'ChatCreateController@index')->name('/');
 });
 
